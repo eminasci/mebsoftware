@@ -24,19 +24,25 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+
+}
+body{
+    margin: 0;
+    padding: 0;
 }
 .logo{
     width:300px;
 }
-.register input, .login input{ 
+.register input, .login input,.add_scholl input{ 
     width: 300px;
-    height: 30px;
+    height: 50px;
     padding-left: 20px;
     display: block;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
+    margin-top:50px ;
+   
     border: 1px solid red;
     font-size: medium;
     
@@ -45,15 +51,14 @@ export default {
 
     
 }
+.register
 .register ::placeholder{
     font-size: medium;
     
     
 }
-.header h1{
-    color: rgb(253, 26, 26);
-}
-.register button, .login button{
+
+.register button, .login button, .add_scholl button{
     width: 320px;
     height: 40px;
     border: 1px solid red;

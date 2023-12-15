@@ -2,7 +2,8 @@
 node_modules
 /dist
 
-
+[safe]
+    directory = *
 # local env files
 .env.local
 .env.*.local

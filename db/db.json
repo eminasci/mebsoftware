@@ -4,30 +4,14 @@
       "name": "emin",
       "email": "eminasci@hotmail.com",
       "password": "e080402",
+      "auth": "superAdmin",
       "id": 1
-    },
-    {
-      "name": "emre",
-      "email": "emre@hotmail.com",
-      "password": "emre080402",
-      "id": 2
-    },
-    {
-      "name": "emeeeere",
-      "email": "emre@hotmail.com",
-      "password": "emre080402",
-      "id": 3
-    },
-    {
-      "email": "11231231",
-      "password": "12312231231",
-      "name": "eminnnn",
-      "id": 4
     },
     {
       "email": "eminasci@hotmail.com",
       "password": "ahee080402",
       "name": "weaererwqerqr",
+      "auth": "superAdmin",
       "id": 5
     },
     {
@@ -112,7 +96,65 @@
       "email": "test",
       "password": "test",
       "name": "test",
+      "auth": "admin",
       "id": 19
+    },
+    {
+      "email": "nnnnnnnnnnn",
+      "password": "nnnnnnnnnnnnnnnnnnnnnnnnnn",
+      "name": "emibnnnnnn",
+      "id": 20
+    },
+    {
+      "email": "eminasci@hotmail.com",
+      "password": "ahee080402",
+      "name": "emin",
+      "id": 21
+    },
+    {
+      "email": "eminasci@hotmail.com",
+      "password": "ahee080402",
+      "id": 22
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 23
+    },
+    {
+      "email": "test",
+      "password": "est",
+      "id": 24
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 25
     }
-  ]
+  ],
+  "okul": [
+    {
+      "okuladi": "Selin",
+      "mudur": "asdasdsad",
+      "iletisim_bilgisi": "05327243868",
+      "adres": "izmir bornova 6205/1 SOK. NO:11 D:20 ",
+      "id": 1
+    },
+    {
+      "okuladi": "APİTEST",
+      "mudur": "APİMÜDÜR",
+      "iletisim_bilgisi": "APİİLETİSİM",
+      "adres": "APİADRES",
+      "id": 9,
+      "ogrenciler": []
+    },
+    {
+      "okuladi": "Yunus Emre Anadolu Lisesi",
+      "mudur": "emin",
+      "iletisim_bilgisi": "05327243868",
+      "adres": "testadres",
+      "id": 12
+    }
+  ],
+  "login": []
 }

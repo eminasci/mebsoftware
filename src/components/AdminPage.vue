@@ -1,6 +1,6 @@
 <!-- <template>
     <HeaderPage/>
-    <h1>Hello {{ name }}, Super Admin sayfasına hoşgeldiniz.</h1>
+    <h1>Merhaba {{ name }}, Admin sayfasına hoşgeldiniz</h1>
     <table :border='1'>
     <tr>
         <td>ID</td>
@@ -85,9 +85,9 @@ table{
 }
 </style> -->
 <template>
-    <HeaderPage />
-    <div class="super-admin-welcome">
-        <h1>Hello {{ name }}, Super Admin sayfasına hoşgeldiniz.</h1>
+    <HeaderPage/>
+    <div class="admin-welcome">
+        <h1>Merhaba {{ name }}, Admin sayfasına hoşgeldiniz</h1>
         <table class="school-table" :border='1'>
             <tr>
                 <th>ID</th>
@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style scoped>
-.super-admin-welcome {
+.admin-welcome {
     text-align: center;
     margin: 20px;
 }
