@@ -118,17 +118,28 @@ export default
           alert('Lütfen e-posta ve şifre alanlarını doldurun!');
           return;
         }
+        const postData = {
+          userEmail:this.email,
+          userPassword:this.password,
+        };
+
+        // POST isteği yapma
+      
   
-        let result = await axios.get(
-          `http://localhost:3000/user?email=${this.email}&password=${this.password}`
+        let result = await axios.post(
+          "http://localhost:5215/api/User/Login",postData
         );
+        
+        console.log(result);
   
-        if (result.status == 200 && result.data.length > 0) {
-          localStorage.setItem('user-info', JSON.stringify(result.data[0]));
-          console.warn(result.data[0].auth);
-          if (result.data[0].auth == 'superAdmin') {
+        if (result.status==200) {
+          localStorage.setItem('user-info', JSON.stringify(result.data));
+          const roleControl= result.data.roleId
+          console.warn(roleControl)
+          
+          if (result.data.roleId == 1) {
             this.$router.push({ name: 'HomePage' });
-          } else if (result.data[0].auth == 'admin') {
+          } else if (result.data.roleId == 2) {
             this.$router.push({ name: 'AdminPage' });
           } else {
             alert('Yetkilendirme için üst biriminizle görüşünüz.');

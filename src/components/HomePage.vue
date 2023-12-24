@@ -1,155 +1,110 @@
-<!-- <template>
-    <HeaderPage/>
-    <h1>Hello {{ name }}, Super Admin sayfasına hoşgeldiniz.</h1>
-    <table :border='1'>
-    <tr>
-        <td>ID</td>
-        <td>OKUL ADI</td>
-        <td>MÜDÜR ADI</td>
-        <td>İLETİŞİM BİLGİLERİ</td>
-        <td>OKUL ADRESİ</td>
-        <td>GÜNCELLE</td>
-        <td>SİL</td>
-        
-        
-    </tr>
-    <tr v-for="item in okul" :key="item.id">
-    <td>{{ item.id }}</td>
-    <td>{{ item.okuladi }}</td>
-    <td>{{ item.mudur }}</td>
-    <td>{{ item.iletisim_bilgisi}}</td>
-    <td>{{ item.adres}}</td>
-    <td><router-link :to="'/update-scholl/'+item.id">GÜNCELLE</router-link></td>
-    <td>  <button v-on:click="okulSil(item.id)">OKULU SİL</button></td>
-    </tr>
-    </table>
-   
-    
-</template>
 
-<script>
-import HeaderPage from './HeaderPage.vue'
-import axios from 'axios';
-export default{
-    name:'HomePage',
-    data(){
-        return{
-            name:'',
-            okul:[],
-        }
-    },
-    components:{
-    
-        HeaderPage
-    },
-    methods:{
-       async okulSil(id)
-        {
-            let result = await axios.delete("http://localhost:3000/okul/"+id);
-            console.warn(result)
-            if(result.status==200)
-            {
-                this.listeyiYukle()
-            }
-          
-            
-        },
-        async listeyiYukle()
-        {
-                let user= localStorage.getItem('user-info');
-        this.name= JSON.parse(user).name;
-        if (!user) 
-        {
-            this.$router.push({name:'SignUp'})
-        }
-        let result =await axios.get("http://localhost:3000/okul");
-        console.warn(result)
-        this.okul=result.data;
-        }
-    },
-  async mounted()
-    {
-       this.listeyiYukle()
-    }
-}
-</script>
-<style>
-td{
-    width:300px ;
-    height: 40px;
-    
-}
-table{
-   
-    margin-top: 20px;
-}
-</style> -->
 <template>
     <HeaderPage />
     <div class="super-admin-welcome">
-        <h1>Hello {{ name }}, Super Admin sayfasına hoşgeldiniz.</h1>
-        <table class="school-table" :border='1'>
-            <tr>
-                <th>ID</th>
-                <th>OKUL ADI</th>
-                <th>MÜDÜR ADI</th>
-                <th>İLETİŞİM BİLGİLERİ</th>
-                <th>OKUL ADRESİ</th>
-                <th class="action-column">GÜNCELLE</th>
-                <th class="action-column">SİL</th>
-            </tr>
-            <tr v-for="item in okul" :key="item.id">
-                <td>{{ item.id }}</td>
-                <td>{{ item.okuladi }}</td>
-                <td>{{ item.mudur }}</td>
-                <td>{{ item.iletisim_bilgisi}}</td>
-                <td>{{ item.adres}}</td>
-                <td class="action-column"><router-link :to="'/update-scholl/'+item.id">GÜNCELLE</router-link></td>
-                <td class="action-column"><button v-on:click="okulSil(item.id)">OKULU SİL</button></td>
-            </tr>
-        </table>
+      <h1>Merhaba {{ name }}  , Super Admin sayfasına hoşgeldiniz.</h1>
+      <table class="school-table" :border="1">
+        <tr>
+          <th>ID</th>
+          <th>OKUL ADI</th>
+        <th>MÜDÜR ID</th>
+        <th>MÜDÜR ADI</th>
+          <th>İLETİŞİM BİLGİLERİ</th>
+          <th>OKUL ADRESİ</th>
+          <th>OKUL TÜRÜ</th>
+          <th class="action-column">GÜNCELLE</th>
+          <th class="action-column">SİL</th>
+        </tr>
+        <tr v-for="item in okul" :key="item.id">
+          <td>{{ item.okulId }}</td>
+          <td>{{ item.okulAdi }}</td>
+          <td>{{ item.userId }}</td> 
+          <td>{{ item.userName }}</td>
+          <td>{{ item.okulIletisim }}</td>
+          <td>{{ item.okulAdres }}</td>
+          <td>{{ item.okulTuru }}</td>
+          <td class="action-column"><router-link :to="'/update-scholl/'+item.okulId">GÜNCELLE</router-link></td>
+          <td class="action-column"><button v-on:click="okulSil(item.okulId)">OKULU SİL</button></td>
+        </tr>
+      </table>
     </div>
-</template>
-
-<script>
-import HeaderPage from './HeaderPage.vue'
-import axios from 'axios';
-
-export default {
+  </template>
+  
+  <script>
+  import HeaderPage from './HeaderPage.vue';
+  import axios from 'axios';
+  
+  export default {
     name: 'HomePage',
     data() {
-        return {
-            name: '',
-            okul: [],
-        }
+      return {
+        name: '',
+        okul: [],
+      };
     },
     components: {
-        HeaderPage
+      HeaderPage,
     },
     methods: {
-        async okulSil(id) {
-            let result = await axios.delete("http://localhost:3000/okul/" + id);
-            console.warn(result)
-            if (result.status == 200) {
-                this.listeyiYukle()
-            }
-        },
-        async listeyiYukle() {
-            let user = localStorage.getItem('user-info');
-            this.name = JSON.parse(user).name;
-            if (!user) {
-                this.$router.push({ name: 'SignUp' })
-            }
-            let result = await axios.get("http://localhost:3000/okul");
-            console.warn(result)
-            this.okul = result.data;
-        }
+    //     async okulSil(okulId) {
+    //   let result = await axios.delete(`http://localhost:5215/api/Okuls/${okulId}`);
+    //   console.warn(result);
+    //   if (result.status == 204) {
+    //     this.listeyiYukle();
+    //   }
+    // },
+    async okulSil(okulId) {
+  const confirmDelete = confirm('Bu okulu silmek istediğinize emin misiniz?');
+  
+  if (confirmDelete) {
+    try {
+      let result = await axios.delete(`http://localhost:5215/api/Okuls/${okulId}`);
+      console.warn(result);
+      if (result.status === 204) {
+        this.listeyiYukle();
+      }
+    } catch (error) {
+      console.error('Error during school deletion:', error);
+    }
+  }
+},
+      
+      async listeyiYukle() {
+        let user = localStorage.getItem('user-info');
+  this.name = JSON.parse(user).name;
+  if (!user) {
+    this.$router.push({ name: 'SignUp' });
+  }
+  let result = await axios.get('http://localhost:5215/api/Okuls');
+  console.warn(result);
+
+  // Kullanıcı adlarını çekmek için döngü
+  for (let i = 0; i < result.data.length; i++) {
+    let userId = result.data[i].userId;
+    console.warn(userId)
+    
+    // Her bir userId için ayrı bir API çağrısı yaparak kullanıcı adını al
+    let userResult = await axios.get(`http://localhost:5215/api/User/${userId}`);
+    
+    // Okul verisine userName alanını ekle
+    result.data[i].userName = userResult.data.userName;
+    console.warn(userResult.data.userName)
+  }
+
+  this.okul = result.data;
+  
+      
+      },
     },
     async mounted() {
-        this.listeyiYukle()
-    }
-}
-</script>
+      this.listeyiYukle();
+      const userInfo = localStorage.getItem('user-info');
+      const user = JSON.parse(userInfo);
+      this.name=user.userName
+
+    },
+  };
+  </script>
 
 <style scoped>
 .super-admin-welcome {
@@ -198,4 +153,4 @@ export default {
 .action-column a:hover, .action-column button:hover {
     opacity: 0.8;
 }
-</style>
+</style> 

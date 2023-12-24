@@ -58,31 +58,33 @@ import LoginPage from './components/LoginPage.vue'
 import AddScholl from './components/AddScholl.vue'
 import UpdateScholl from './components/UpdateScholl.vue'
 import AdminPage from './components/AdminPage.vue'
+import ListUser from './components/ListUser.vue'
 
 const routes = [
     {
-        name: "HomePage",
+        name: 'HomePage',
         component: HomePage,
         path: '/',
         beforeEnter: (to, from, next) => {
-            // localStorage'da kullanıcı bilgisi var mı kontrol et
-            const userInfo = localStorage.getItem('user-info');
-            if (userInfo) {
-                if (userInfo) {
-                    const user = JSON.parse(userInfo);
-                    if (user.auth === 'superAdmin') {
-                        next();
-                    } else {
-                        next('/login');
-                    }
-                }
-             
+          // localStorage'da kullanıcı bilgisi var mı kontrol et
+          const userInfo = localStorage.getItem('user-info');
+    
+          if (userInfo) {
+            const user = JSON.parse(userInfo);
+            if (user.roleId == 1) {
+              // Kullanıcı izinli, sayfaya devam et
+              next();
             } else {
-                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
-                next('/login');
+              // Kullanıcı yetkili değil, login sayfasına yönlendir
+              next('/login');
             }
+          } else {
+            // Kullanıcı giriş yapmamışsa login sayfasına yönlendir
+            next('/login');
+          }
         },
-    },
+      },
+    
     {
         name: "SignUp",
         component: SignUp,
@@ -92,7 +94,7 @@ const routes = [
             const userInfo = localStorage.getItem('user-info');
             if (userInfo) {
                 const user = JSON.parse(userInfo);
-                if (user.auth === 'superAdmin') {
+                if (user.roleId== 1) {
                     next();
                 } else {
                     next('/login');
@@ -117,7 +119,27 @@ const routes = [
             const userInfo = localStorage.getItem('user-info');
             if (userInfo) {
                 const user = JSON.parse(userInfo);
-                if (user.auth === 'superAdmin') {
+                if (user.roleId== 1) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name:"ListUser",
+        component: ListUser,
+        path: "/list-user",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1) {
                     next();
                 } else {
                     next('/login');
@@ -131,13 +153,14 @@ const routes = [
     {
         name: "UpdateScholl",
         component: UpdateScholl,
-        path: "/update-scholl/:id",
+        path: "/update-scholl/:okulId",
+        props:true,
         beforeEnter: (to, from, next) => {
             // localStorage'da kullanıcı bilgisi var mı kontrol et
             const userInfo = localStorage.getItem('user-info');
             if (userInfo) {
                 const user = JSON.parse(userInfo);
-                if (user.auth === 'superAdmin') {
+                if (user.roleId == 1) {
                     next();
                 } else {
                     next('/login');
@@ -151,13 +174,13 @@ const routes = [
     {
         name: "AdminPage",
         component: AdminPage,
-        path: "/adminPage",
+        path: "/adminPage/:id",
         beforeEnter: (to, from, next) => {
             // localStorage'da kullanıcı bilgisi var mı kontrol et
             const userInfo = localStorage.getItem('user-info');
             if (userInfo) {
                 const user = JSON.parse(userInfo);
-                if (user.auth === 'admin') {
+                if (user.roleId ==2) {
                     next();
                 } else {
                     next('/login');

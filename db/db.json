@@ -2,151 +2,33 @@
   "user": [
     {
       "name": "emin",
-      "email": "eminasci@hotmail.com",
+      "email": "eminasci2@hotmail.com",
       "password": "e080402",
       "auth": "superAdmin",
       "id": 1
     },
     {
-      "email": "eminasci@hotmail.com",
+      "email": "eminasci3@hotmail.com",
       "password": "ahee080402",
       "name": "weaererwqerqr",
-      "auth": "superAdmin",
+      "auth": "admin",
       "id": 5
     },
     {
-      "email": "",
-      "password": "",
-      "name": "",
-      "id": 6
-    },
-    {
-      "email": "",
-      "password": "",
-      "name": "",
-      "id": 7
-    },
-    {
-      "email": "adadsa",
-      "password": "dada",
-      "name": "asdad",
-      "id": 8
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "denem",
-      "id": 9
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "testtttt",
-      "id": 10
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "testtttt",
-      "id": 11
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "",
-      "id": 12
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "asdasdsad",
-      "id": 13
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "asdasdsad",
-      "id": 14
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "asdasdsad",
-      "id": 15
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "sdadas",
-      "id": 16
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "testtttt",
-      "id": 17
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "name": "goooo",
-      "id": 18
-    },
-    {
-      "email": "test",
-      "password": "test",
-      "name": "test",
-      "auth": "admin",
-      "id": 19
-    },
-    {
-      "email": "nnnnnnnnnnn",
-      "password": "nnnnnnnnnnnnnnnnnnnnnnnnnn",
-      "name": "emibnnnnnn",
-      "id": 20
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
+      "email": "e",
+      "password": "e",
       "name": "emin",
-      "id": 21
-    },
-    {
-      "email": "eminasci@hotmail.com",
-      "password": "ahee080402",
-      "id": 22
-    },
-    {
-      "email": "test",
-      "password": "test",
-      "id": 23
-    },
-    {
-      "email": "test",
-      "password": "est",
-      "id": 24
-    },
-    {
-      "email": "test",
-      "password": "test",
-      "id": 25
+      "auth": "admin",
+      "id": 6
     }
   ],
   "okul": [
     {
       "okuladi": "Selin",
-      "mudur": "asdasdsad",
+      "mudur": "weaererwqerqr",
       "iletisim_bilgisi": "05327243868",
-      "adres": "izmir bornova 6205/1 SOK. NO:11 D:20 ",
+      "adres": "izmir bornova 6205/1 SOK. NO:11 D:20 113213",
       "id": 1
-    },
-    {
-      "okuladi": "APİTEST",
-      "mudur": "APİMÜDÜR",
-      "iletisim_bilgisi": "APİİLETİSİM",
-      "adres": "APİADRES",
-      "id": 9,
-      "ogrenciler": []
     },
     {
       "okuladi": "Yunus Emre Anadolu Lisesi",
@@ -154,6 +36,13 @@
       "iletisim_bilgisi": "05327243868",
       "adres": "testadres",
       "id": 12
+    },
+    {
+      "okuladi": "Yunus Emre Anadolu Lisesi",
+      "mudur": "emin",
+      "iletisim_bilgisi": "24324",
+      "adres": "234234",
+      "id": 13
     }
   ],
   "login": []
