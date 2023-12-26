@@ -59,8 +59,13 @@ import AddScholl from './components/AddScholl.vue'
 import UpdateScholl from './components/UpdateScholl.vue'
 import AdminPage from './components/AdminPage.vue'
 import ListUser from './components/ListUser.vue'
+import AddStudent from './components/AddStudent.vue'
+import ListStudent from './components/ListStudent.vue'
+import EditStudent from './components/EditStudent.vue'
+import AdminAddStudent from './components/AdminAddStudent.vue'
+import AdminListStudent from './components/AdminListStudent.vue'
 
-const routes = [
+const routes =[
     {
         name: 'HomePage',
         component: HomePage,
@@ -114,6 +119,106 @@ const routes = [
         name: "AddScholl",
         component: AddScholl,
         path: "/add-scholl",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "EditStudent",
+        component: EditStudent,
+        path: "/edit-student/:studentId",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "AddStudent",
+        component: AddStudent,
+        path: "/add-student",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "AdminAddStudent",
+        component: AdminAddStudent,
+        path: "/admin-add-student",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1||user.roleId==2) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "AdminListStudent",
+        component: AdminListStudent,
+        path: "/admin-list-student",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1||user.roleId==2) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "ListStudent",
+        component: ListStudent,
+        path: "/list-student",
         beforeEnter: (to, from, next) => {
             // localStorage'da kullanıcı bilgisi var mı kontrol et
             const userInfo = localStorage.getItem('user-info');

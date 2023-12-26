@@ -70,6 +70,12 @@
         <div class="divider"></div>
         <router-link class="nav-link" to="/sign-up">Kullanıcı Ekle</router-link>
         <div class="divider"></div>
+        <router-link class="nav-link" to="/list-user">Kullanıcıları Listele</router-link>
+        <div class="divider"></div>
+        <router-link class="nav-link" to="/add-student">Öğrenci Ekle</router-link>
+        <div class="divider"></div>
+        <router-link class="nav-link" to="/list-student">Öğrenci Listele</router-link>
+        <div class="divider"></div>
         <a class="nav-link" v-on:click="logout" href="#">Çıkış Yap</a>
       </div>
     </div>

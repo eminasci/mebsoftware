@@ -140,7 +140,7 @@ export default
           if (result.data.roleId == 1) {
             this.$router.push({ name: 'HomePage' });
           } else if (result.data.roleId == 2) {
-            this.$router.push({ name: 'AdminPage' });
+            this.$router.push({ name: 'AdminListStudent' });
           } else {
             alert('Yetkilendirme için üst biriminizle görüşünüz.');
           }
