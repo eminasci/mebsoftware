@@ -1,60 +1,303 @@
-<template>
+<!-- <template>
   <div>
-    <h2>Okul Information</h2>
-    <div v-if="okul">
-      <p>Okul Adı: {{ okul.OkulAdi }}</p>
-      <p>Okul Adres: {{ okul.OkulAdres }}</p>
-      
-    </div>
-    <div v-else>
-      <p>Okul bilgisi bulunamadı.</p>
+    <HeaderPage />
+    <div class="school-details">
+      <h1>{{ okul.okuladi }} Okulu Detayları</h1>
+      <div class="school-info">
+        <p><strong>Müdür:</strong> {{ okul.mudur }}</p>
+        <p><strong>İletişim Bilgisi:</strong> {{ okul.iletisim_bilgisi }}</p>
+        <p><strong>Adres:</strong> {{ okul.adres }}</p>
+      </div>
+
+      <h2>Öğrenciler</h2>
+      <div v-if="okul.ogrenciler && okul.ogrenciler.length > 0">
+        <table class="school-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Adı</th>
+              <th>T.C. Kimlik Numarası</th>
+              <th>Sınıfı</th>
+              <th>Devamsızlık</th>
+              <th>İletişim Bilgisi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="ogrenci in okul" :key="ogrenci" :class="{ 'high-devamsizlik': ogrenci.devamsizlik >= 3 }">
+              <td>{{ ogrenci.ogrenciId }}</td>
+              <td>{{ ogrenci.ogrenciName }}</td>
+              <td>{{ ogrenci.ogrenciTc }}</td>
+              <td>{{ ogrenci.ogrenciSinif }}</td>
+              <td>{{ ogrenci.ogrenciDevamsizlik }}</td>
+              <td>{{ ogrenci.ogrenciIletisimBilgisi }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div v-else>
+        <p>Kullanıcıya bağlı okul bulunamadı.</p>
+      </div>
     </div>
   </div>
 </template>
 
-
 <script>
+import HeaderPage from './HeaderPage.vue';
 import axios from 'axios';
+
 export default {
+  name: 'SchoolDetails',
+  components: {
+    HeaderPage,
+  },
   data() {
     return {
-      okul: null,
-      userId: null,
+      okul: {},
     };
   },
-  mounted() {
-    this.userId = this.getUserIdFromLocalStorage();
-    this.fetchOkul();
+  async mounted() {
+    const storedUserInfo = JSON.parse(localStorage.getItem('user-info'));
+    this.userInfo = storedUserInfo.userId;
+
+    console.warn(this.userInfo);
+
+    try {
+      const response = await axios.get(`http://localhost:5215/api/User/get-school/${this.userInfo}`);
+      this.okul = response.data;
+      
+     
+      console.log(this.okul[0])
+    } catch (error) {
+      // Hata durumunda eğer 404 hatası alınıyorsa, kullanıcıya bağlı okul bulunamadığı bilgisini gösterelim.
+      if (error.response && error.response.status === 404) {
+        alert('Okul bulunamadı.');
+      } else {
+        console.error('API Request Failed:', error);
+      }
+    }
+  },
+};
+</script>
+
+<style scoped>
+.school-details {
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.school-info {
+  margin-bottom: 20px;
+}
+
+.school-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.school-table th,
+.school-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.school-table th {
+  background-color: #f2f2f2;
+}
+
+.school-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.high-devamsizlik {
+  background-color: #ffcccc; /* veya istediğiniz başka bir renk */
+  font-weight: bold;
+}
+</style> -->
+<template>
+  <div>
+    <AdminHeaderPage/>
+    <div class="school-details">
+      <h1>{{ okul.okuladi }} Okul Detayları</h1>
+      <div class="school-info"  v-if="Array.isArray(okul) && okul.length > 0">
+        <p><strong>Müdür:</strong> {{ user.userName }}</p>
+        <p><strong>İletişim Bilgisi:</strong> {{ user.userPhoneNumber }}</p>
+        <p><strong>Okul Adı:</strong> {{ okul[0].okul.okulAdi}}</p>
+      </div>
+
+      <h2>Öğrenciler</h2>
+      <div v-if="Array.isArray(okul) && okul.length > 0">
+        <table class="school-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Adı</th>
+              <th>T.C. Kimlik Numarası</th>
+              <th>Sınıfı</th>
+              <th>Devamsızlık</th>
+              <th>İletişim Bilgisi</th>
+              <th>Veli Adı</th>
+              <th>Veli Tel</th>
+              <th>Durum</th>
+              <th>Güncelle</th>
+              <th>Sil</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="ogrenci in okul" :key="ogrenci.ogrenciId" :class="{ 'high-devamsizlik': ogrenci.ogrenciDevamsizlik >= 3,'very-high-devamsizlik': ogrenci.ogrenciDevamsizlik >= 5 }">
+              <td>{{ ogrenci.ogrenciId }}</td>
+              <td>{{ ogrenci.ogrenciName }}</td>
+              <td>{{ ogrenci.ogrenciTc }}</td>
+              <td>{{ ogrenci.ogrenciSinif }}</td>
+              <td>{{ ogrenci.ogrenciDevamsizlik }}</td>
+              <td>{{ ogrenci.ogrenciPhoneNumber }}</td>
+              <td>{{ ogrenci.veliName }}</td>
+              <td>{{ ogrenci.veliPhoneNumber }}</td>
+              <td>{{ ogrenci.ogrenciDurum }}</td>
+              <td> <button @click="editStudent(ogrenci.ogrenciId)" class="edit-button">Güncelle</button></td>
+              <td><button @click="confirmDeleteStudent(ogrenci.ogrenciId)" class="delete-button">Sil</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div v-else>
+        <p>Kullanıcıya bağlı okul bulunamadı.</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import AdminHeaderPage from './AdminHeaderPage.vue';
+import axios from 'axios';
+
+export default {
+  name: 'SchoolDetails',
+  components: {
+  
+    AdminHeaderPage
+},
+  data() {
+    return {
+      okul: {},
+      user:{},
+    };
+  },
+  created() {
+    this.fetchSchoolDetails();
   },
   methods: {
-    getUserIdFromLocalStorage() {
-      const userInfo = localStorage.getItem('user-info');
-
-      if (userInfo) {
-        const parsedInfo = JSON.parse(userInfo);
-        return parsedInfo.userId;
-      }
-
-      return null;
+    async editStudent(studentId) {
+      // Öğrenci güncelleme sayfasına yönlendirme yapabilirsiniz
+      console.log('Edit student:', studentId);
+      // Örneğin:
+       this.$router.push({ name: 'AdminEditStudent', params: { studentId } });
     },
-    fetchOkul() {
-      if (!this.userId) {
-        console.error('User ID not found.');
-        return;
+    async confirmDeleteStudent(studentId) {
+        if (confirm('Öğrenciyi silmek istediğinize emin misiniz?')) {
+          await axios.delete(`http://localhost:5215/api/Students/${studentId}`)
+          this.fetchSchoolDetails();
+          
+        }
+      },
+    async fetchSchoolDetails() {
+      const storedUserInfo = JSON.parse(localStorage.getItem('user-info'));
+      this.userInfo = storedUserInfo.userId;
+      this.user=storedUserInfo
+      
+
+      try {
+        const response = await axios.get(`http://localhost:5215/api/User/get-school/${this.userInfo}`);
+        const rawData = response.data;
+        const plainArray = Array.from(rawData); // veya [...rawData];
+        this.okul = plainArray;
+        
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert('Okul bulunamadı.');
+        } else {
+          console.error('API Request Failed:', error);
+        }
       }
-
-      const apiUrl = `/User/get-school/${this.userId}`;
-
-      this.axios
-        .get(apiUrl)
-        .then((response) => {
-          this.okul = response.data;
-          console.log('Okul Data:', this.okul);
-        })
-        .catch((error) => {
-          console.error('Error fetching Okul:', error);
-        });
     },
   },
 };
 </script>
+
+<style scoped>
+.school-details {
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.school-info {
+  margin-bottom: 20px;
+}
+
+.school-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.school-table th,
+.school-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.school-table th {
+  background-color: #f2f2f2;
+}
+
+.school-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.high-devamsizlik {
+  background-color: #ffcccc; 
+  font-weight: bold;
+}
+.very-high-devamsizlik {
+  background-color: #ff3333; /* veya istediğiniz başka bir renk */
+  color: #333;
+  font-weight: bold;
+}
+.edit-button {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.edit-button:hover {
+  background-color: #2980b9;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+</style>
+

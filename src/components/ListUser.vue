@@ -161,7 +161,7 @@
             <td>{{ user.role.roleName }}</td>
             <td>{{ user.userPassword }}</td>
             <td class="action-column">
-              <a @click="editUser(user)" class="edit-button">Güncelle</a>
+              <a @click="editUser(user.userId)" class="edit-button">Güncelle</a>
             </td>
             <td class="action-column">
               <button @click="confirmDeleteUser(user.userId)" class="delete-button">Sil</button>
@@ -198,12 +198,12 @@ export default {
       }
     },
   
-    editUser(user) {
-      // Burada kullanıcının güncelleneceği sayfaya yönlendirme yapabilirsiniz.
-      console.log('Edit user:', user);
-    },
+    editUser(userId) {
+ 
+  this.$router.push({ name: 'EditUser', params: { userId} });
+},
     confirmDeleteUser(userId) {
-      // Silme işlemine onay almak için bir pencere göster
+
       if (confirm('Kullanıcıyı silmek istediğinize emin misiniz?')) {
         this.deleteUser(userId);
       }

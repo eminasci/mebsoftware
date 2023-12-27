@@ -66,7 +66,9 @@
       <div class="nav">
         <router-link class="nav-link" to="/">Ana Sayfa</router-link>
         <div class="divider"></div>
-        <router-link class="nav-link" to="/add-scholl">Okul Ekle</router-link>
+        <router-link class="nav-link" to="/admin-list-student">Öğrencileri Listele</router-link>
+        <div class="divider"></div>
+        <router-link class="nav-link" to="/admin-add-student">Öğrenci Ekle</router-link>
         <div class="divider"></div>
       
         <a class="nav-link" v-on:click="logout" href="#">Çıkış Yap</a>
@@ -76,7 +78,7 @@
   
   <script>
   export default {
-    name: 'HeaderPage',
+    name: 'AdminHeaderPage',
     methods: {
       logout() {
         localStorage.clear();

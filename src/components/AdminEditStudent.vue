@@ -1,6 +1,6 @@
 <template>
    <div>
-    <HeaderPage />
+    <AdminHeaderPage/>
     <div class="update-student-form">
       <h1>Öğrenci Güncelle</h1>
       <form @submit.prevent="updateStudent" class="student-form" >
@@ -44,12 +44,9 @@
           <input v-model="studentModel.veliPhoneNumber" type="text" required />
         </div>
 
-        <div class="form-group">
-          <label for="OkulId">Okul:</label>
-          <select v-model="studentModel.okulId" required>
-            <option v-for="school in schools" :key="school.okulId" :value="school.okulId">{{ school.okulAdi }}</option>
-          </select>
-        </div>
+      
+        
+       
 
         <button type="submit" class="submit-button">Öğrenciyi Güncelle</button>
       </form>
@@ -59,13 +56,14 @@
 
 <script>
 import axios from 'axios';
-import HeaderPage from './HeaderPage.vue';
+import AdminHeaderPage from './AdminHeaderPage.vue';
 
 export default {
   name: 'UpdateStudent',
   components: {
-    HeaderPage,
-  },
+   
+    AdminHeaderPage
+},
   data() {
     return {
       studentModel: {
@@ -91,9 +89,8 @@ export default {
         const result = await axios.put(`http://localhost:5215/api/Students/update-student/${studentId}`, this.studentModel);
 
         alert('Öğrenci başarıyla güncellendi');
-        
         console.warn(result);
-        this.$router.push({ name: 'ListStudent' });
+        this.$router.push({ name: 'AdminListStudent' });
 
       } catch (error) {
         console.error('Error updating student:', error);

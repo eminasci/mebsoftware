@@ -93,7 +93,8 @@ import HeaderPage from './HeaderPage.vue';
                     ...this.studentModel,
                     OkulId: this.selectedSchool,
                 });
-                console.log(result);
+                alert("Öğrenci başarıyla kaydedildi");
+                console.warn(result)
                 // Başarı mesajı veya yönlendirme yapabilirsiniz
             }
             catch (error) {

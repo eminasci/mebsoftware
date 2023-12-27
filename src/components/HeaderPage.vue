@@ -76,6 +76,8 @@
         <div class="divider"></div>
         <router-link class="nav-link" to="/list-student">Öğrenci Listele</router-link>
         <div class="divider"></div>
+       
+        
         <a class="nav-link" v-on:click="logout" href="#">Çıkış Yap</a>
       </div>
     </div>

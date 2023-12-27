@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="student in students" :key="student.ogrenciId">
+          <tr v-for="student in students" :key="student.ogrenciId" :class="{ 'high-devamsizlik': student.ogrenciDevamsizlik >= 3,'very-high-devamsizlik': student.ogrenciDevamsizlik >= 5 }">
             <td>{{ student.ogrenciName }}</td>
             <td>{{ student.ogrenciTc }}</td>
             <td>{{ student.ogrenciDevamsizlik }}</td>
@@ -129,6 +129,15 @@
 
 .edit-button:hover {
   opacity: 0.8;
+}
+.high-devamsizlik {
+  background-color: #ffcccc; 
+  font-weight: bold;
+}
+.very-high-devamsizlik {
+  background-color: #ff3333; /* veya istediğiniz başka bir renk */
+  color: #333;
+  font-weight: bold;
 }
   
   </style>

@@ -64,6 +64,8 @@ import ListStudent from './components/ListStudent.vue'
 import EditStudent from './components/EditStudent.vue'
 import AdminAddStudent from './components/AdminAddStudent.vue'
 import AdminListStudent from './components/AdminListStudent.vue'
+import AdminEditStudent from './components/AdminEditStudent.vue'
+import EditUser from './components/EditUser.vue'
 
 const routes =[
     {
@@ -136,6 +138,26 @@ const routes =[
         },
     },
     {
+        name: "EditUser",
+        component: EditUser,
+        path: "/edit-user/:userId",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
         name: "EditStudent",
         component: EditStudent,
         path: "/edit-student/:studentId",
@@ -145,6 +167,26 @@ const routes =[
             if (userInfo) {
                 const user = JSON.parse(userInfo);
                 if (user.roleId== 1) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "AdminEditStudent",
+        component: AdminEditStudent,
+        path: "/admin-edit-student/:studentId",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1||user.roleId==2) {
                     next();
                 } else {
                     next('/login');
