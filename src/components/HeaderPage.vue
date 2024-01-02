@@ -1,63 +1,4 @@
-<!-- <template>
-    <div class="header">
-      <div class="logo-container">
-        <img class="logo" src="../assets/mebLogo.png" alt="MEB Logo" />
-      </div>
-      <div class="nav">
-        <router-link to="/">Ana Sayfa</router-link>
-        <router-link to="/add-scholl">Okul Ekle</router-link>
-        <a v-on:click="logout" href="#">Çıkış Yap</a>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'HeaderPage',
-    methods: {
-      logout() {
-        localStorage.clear();
-        this.$router.push({ name: 'LoginPage' });
-      }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  .header {
-    background-color: #3498db;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo-container {
-    margin-right: 20px;
-  }
-  
-  .logo {
-    width: 60px; /* Ölçüleri ihtiyacınıza göre ayarlayabilirsiniz */
-  }
-  
-  .nav {
-    display: flex;
-  }
-  
-  .nav a {
-    color: #fff;
-    text-align: center;
-    font-size: 17px;
-    text-decoration: none;
-    padding: 10px;
-    margin-right: 5px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .nav a:hover {
-    background: #2c3e50;
-  }
-  </style> -->
+
   <template>
     <div class="header">
       <div class="logo-container">
@@ -96,47 +37,134 @@
   </script>
   
   <style scoped>
-  .header {
-    background-color: #3498db;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo-container {
-    margin-right: 20px;
-  }
-  
-  .logo {
-    width: 60px;
-  }
-  
-  .nav {
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-link {
-    color: #fff;
-    text-align: center;
-    font-size: 17px;
+ body {
+  font-family: "Urbanist", sans-serif;
+  background-color: #141414;
+}
+.bg-dark {
+  background-color: #141414 !important;
+}
+.header {
+  background-color: #1a1a1a;
+  padding: 20px 0px;
+  ul {
     text-decoration: none;
-    padding: 10px;
-    margin-right: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    li {
+      button {
+        color: white;
+        &:hover {
+          color: #703bf7;
+          transition: 0.2s;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        &:hover {
+          color: #703bf7;
+          transition: 0.2s;
+        }
+      }
+    }
   }
-  
-  .divider {
-    height: 20px;
-    width: 1px;
-    background-color: #fff;
-    margin: 0 10px;
+  .free-demo {
+    border-radius: 10px;
+    border: 1px solid #262626;
+    background-color: #141414;
+    padding: 16px 24px;
+    a {
+      color: white !important;
+    }
+    &:hover {
+      transition: 0.5s;
+      border: 1px solid #8354f8;
+      background-color: #703bf7;
+    }
   }
-  
-  .nav-link:hover {
-    background: #2c3e50;
-    cursor: pointer;
+
+  .absolute-dropdown-button:hover {
+    & + .absolute-dropdown {
+      visibility: visible;
+    }
   }
+  .absolute-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    visibility: hidden;
+    padding-top: 15px;
+    &:hover {
+      visibility: visible;
+    }
+    ul {
+      background-color: #1a1a1a;
+      list-style: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      width: 240px;
+      li {
+        margin-bottom: 15px;
+        a {
+          color: white !important;
+          &:hover {
+            color: #703bf7 !important;
+          }
+        }
+      }
+    }
+  }
+}
+.nav-bg {
+ /* background-image: url("../img/nav-bg.png"); */
+  color: #fff;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-family: Urbanist;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.footer {
+  margin-top: 100px !important;
+  input {
+    background-color: transparent;
+    border-radius: 12px;
+    border: 1px solid var(--Grey-15, #262626);
+    font-family: Urbanist;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.108px;
+    &::placeholder {
+      color: #999 !important;
+    }
+  }
+  .absolute-btn {
+    top: 0;
+    right: 0;
+    color: #e2e2e2 !important;
+    z-index: 99 !important;
+  }
+
+  h6 {
+    color: #999;
+    font-family: Urbanist;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.12px;
+  }
+  li {
+    a {
+      color: #fff;
+      font-family: Urbanist;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: -0.108px;
+    }
+  }
+}
   </style>
   

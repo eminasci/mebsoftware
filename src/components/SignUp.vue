@@ -1,9 +1,9 @@
 <template>
   <div>
-    <HeaderPage />
-    <div class="signup-container">
+    <HeaderTest />
+    <div class="signup-container my-100-50 mb-5">
       <div class="header">
-        <h1>Kullanıcı Ekle</h1>
+        <h1 class="text-dark fw-bold my-3">Kullanıcı Ekle</h1>
       </div>
       <div class="register">
         <label for="name">Ad:</label>
@@ -28,16 +28,19 @@
       </div>
     </div>
   </div>
+  <FooterTest />
 </template>
 
 <script>
 import axios from 'axios';
-import HeaderPage from './HeaderPage.vue';
+
+import HeaderTest from './HeaderTest.vue';
+import FooterTest from './FooterTest.vue';
 
 export default {
   name: 'SignUp',
   components: {
-    HeaderPage,
+    HeaderTest,FooterTest
   },
   data() {
     return {
@@ -111,7 +114,7 @@ export default {
 
 .header {
   text-align: center;
-  background-color: #3498db;
+
   padding: 10px;
   color: white;
   border-radius: 8px 8px 0 0;
@@ -144,7 +147,7 @@ button {
   color: white;
   padding: 10px 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

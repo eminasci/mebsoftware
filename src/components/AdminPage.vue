@@ -86,7 +86,7 @@ table{
 </style> -->
 <template>
     <div>
-      <HeaderPage />
+     <HeaderTwo />
       <div class="school-details">
         <h1>{{ okul.okuladi }} Okulu Detayları</h1>
         <div class="school-info">
@@ -120,16 +120,20 @@ table{
         </table>
       </div>
     </div>
+    <FooterTwo />
   </template>
   
   <script>
-  import HeaderPage from './HeaderPage.vue';
+  
   import axios from 'axios';
+  import HeaderTwo from './HeaderTwo.vue';
+  import FooterTwo from './FooterTwo.vue'
   
   export default {
     name: 'SchoolDetails',
     components: {
-      HeaderPage,
+      HeaderTwo,
+      FooterTwo
     },
     data() {
       return {

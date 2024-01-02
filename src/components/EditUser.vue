@@ -1,9 +1,9 @@
 <template>
     <div>
-      <HeaderPage />
-      <div class="update-user-container">
+      <HeaderTestVue />
+      <div class="update-user-container my-50">
         <div class="header">
-          <h1>Kullanıcı Güncelle</h1>
+          <h1 class="text-dark fw-bold mb-5">Kullanıcı Güncelle</h1>
         </div>
         <div class="update-user">
           <label for="name">Ad:</label>
@@ -27,16 +27,20 @@
         </div>
       </div>
     </div>
+    <FooterTestVue/>
   </template>
   
   <script>
   import axios from 'axios';
-  import HeaderPage from './HeaderPage.vue';
+  import HeaderTestVue from './HeaderTest.vue';
+  import FooterTestVue from './FooterTest.vue';
   
   export default {
     name: 'UpdateUser',
     components: {
-      HeaderPage,
+      
+      HeaderTestVue,
+      FooterTestVue,
     },
     data() {
       return {
@@ -130,7 +134,6 @@
   
   .header {
     text-align: center;
-    background-color: #3498db;
     padding: 10px;
     color: white;
     border-radius: 8px 8px 0 0;
@@ -170,6 +173,10 @@
   
   button:hover {
     background-color: #45a049;
+  }
+
+  .my-50{
+    margin: 50px auto;
   }
   </style>
   

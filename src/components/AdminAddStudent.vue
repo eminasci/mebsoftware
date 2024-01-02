@@ -1,68 +1,98 @@
 <template>
-  <AdminHeaderPage/>
-  <div>
-  
-    <div class="add-student-form">
-      <h1>Yeni Öğrenci Ekle</h1>
-      <form @submit.prevent="submitForm" class="student-form">
+  <HeaderTwoVue />
+  <div class="my-50">
+
+<div class="add-student-form admin-details-container">
+  <div class="inner-content">
+  <h1 class="fw-bold text-uppercase mb-5">Yeni Öğrenci Ekle</h1>
+  <form @submit.prevent="submitForm" class="student-form ">
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="OgrenciName">Öğrenci Adı:</label>
-          <input v-model="studentModel.OgrenciName" type="text" required />
+          <input v-model="studentModel.OgrenciName" type="text" class="form-control" required />
         </div>
+      </div>
 
+      <div class="col-md-6">
         <div class="form-group">
           <label for="OgrenciTc">Öğrenci T.C.:</label>
-          <input v-model="studentModel.OgrenciTc" type="text" required />
+          <input v-model="studentModel.OgrenciTc" type="text" class="form-control" required />
         </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="OgrenciDevamsizlik">Devamsızlık:</label>
-          <input v-model="studentModel.OgrenciDevamsizlik" type="number" required />
+          <input v-model="studentModel.OgrenciDevamsizlik" type="number" class="form-control" required />
         </div>
+      </div>
 
+      <div class="col-md-6">
         <div class="form-group">
           <label for="OgrenciDurum">Durum:</label>
-          <input v-model="studentModel.OgrenciDurum" type="text" required />
+          <input v-model="studentModel.OgrenciDurum" type="text" class="form-control" required />
         </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="OgrenciSinif">Sınıf:</label>
-          <input v-model="studentModel.OgrenciSinif" type="text" required />
+          <input v-model="studentModel.OgrenciSinif" type="text" class="form-control" required />
         </div>
+      </div>
 
+      <div class="col-md-6">
         <div class="form-group">
           <label for="OgrenciPhoneNumber">Telefon Numarası:</label>
-          <input v-model="studentModel.OgrenciPhoneNumber" type="text" required />
+          <input v-model="studentModel.OgrenciPhoneNumber" type="text" class="form-control" required />
         </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="VeliName">Veli Adı:</label>
-          <input v-model="studentModel.VeliName" type="text" required />
+          <input v-model="studentModel.VeliName" type="text" class="form-control" required />
         </div>
+      </div>
 
+      <div class="col-md-6">
         <div class="form-group">
           <label for="VeliPhoneNumber">Veli Telefon Numarası:</label>
-          <input v-model="studentModel.VeliPhoneNumber" type="text" required />
+          <input v-model="studentModel.VeliPhoneNumber" type="text" class="form-control" required />
         </div>
-
-        <div class="form-group">
-          <button type="submit" class="submit-button">Öğrenciyi Ekle</button>
-        </div>
-      </form>
+      </div>
     </div>
+
+    <div class="form-group mt-3">
+      <button type="submit" class="submit-button btn btn-primary">Öğrenciyi Ekle</button>
+    </div>
+  </form>
+</div>
+
+</div>
   </div>
+  <FooterTwoVue />
 </template>
 
 <script>
 import axios from 'axios';
-import AdminHeaderPage from './AdminHeaderPage.vue';
 
-
+import HeaderTwoVue from './HeaderTwo.vue';
+import FooterTwoVue from './FooterTwo.vue';
 
 export default {
   name: 'AddStudent',
   components: {
-    AdminHeaderPage,
+
+    HeaderTwoVue,
+    FooterTwoVue,
   },
   data() {
     return {
@@ -75,8 +105,8 @@ export default {
         OgrenciPhoneNumber: '',
         VeliName: '',
         VeliPhoneNumber: '',
-        
-        
+
+
       },
     };
   },
@@ -119,7 +149,7 @@ export default {
 
 <style scoped>
 .add-student-form {
-  max-width: 400px;
+  max-width: 800px;
   margin: auto;
 }
 
@@ -145,7 +175,7 @@ input {
 }
 
 .submit-button {
-  background-color: #3498db;
+  background-color: #34db4a;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -155,6 +185,25 @@ input {
 }
 
 .submit-button:hover {
-  background-color: #2980b9;
+  background-color: #29b935;
+}
+
+.admin-details-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inner-content {
+  /* İçeriği içeride hizala */
+  padding: 10px;
+  /* İstediğiniz dolgu miktarı */
+}
+
+.my-50{
+  margin: 100px auto;
 }
 </style>
