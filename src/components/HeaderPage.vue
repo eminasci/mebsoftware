@@ -32,6 +32,8 @@
         localStorage.clear();
         this.$router.push({ name: 'LoginPage' });
       }
+
+      
     }
   }
   </script>

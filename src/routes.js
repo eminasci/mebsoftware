@@ -66,6 +66,9 @@ import AdminAddStudent from './components/AdminAddStudent.vue'
 import AdminListStudent from './components/AdminListStudent.vue'
 import AdminEditStudent from './components/AdminEditStudent.vue'
 import EditUser from './components/EditUser.vue'
+import AdminListFiveDay from './components/AdminListFiveDay.vue'
+import ListFiveDay from './components/ListFiveDay.vue'
+import AddStudentExcell from './components/AddStudentExcell.vue'
 
 const routes =[
     {
@@ -121,6 +124,26 @@ const routes =[
         name: "AddScholl",
         component: AddScholl,
         path: "/add-scholl",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "ListFiveDay",
+        component: ListFiveDay,
+        path: "/list-fiveday",
         beforeEnter: (to, from, next) => {
             // localStorage'da kullanıcı bilgisi var mı kontrol et
             const userInfo = localStorage.getItem('user-info');
@@ -238,6 +261,26 @@ const routes =[
         },
     },
     {
+        name: "AddStudentExcell",
+        component: AddStudentExcell,
+        path: "/admin-add-excell",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId== 1||user.roleId==2) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
         name: "AdminListStudent",
         component: AdminListStudent,
         path: "/admin-list-student",
@@ -322,6 +365,26 @@ const routes =[
         name: "AdminPage",
         component: AdminPage,
         path: "/adminPage/:id",
+        beforeEnter: (to, from, next) => {
+            // localStorage'da kullanıcı bilgisi var mı kontrol et
+            const userInfo = localStorage.getItem('user-info');
+            if (userInfo) {
+                const user = JSON.parse(userInfo);
+                if (user.roleId ==2) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } else {
+                // Kullanıcı giriş yapmamışsa giriş sayfasına yönlendir
+                next('/login');
+            }
+        },
+    },
+    {
+        name: "AdminListFiveDay",
+        component: AdminListFiveDay,
+        path: "/admin-list-fiveday",
         beforeEnter: (to, from, next) => {
             // localStorage'da kullanıcı bilgisi var mı kontrol et
             const userInfo = localStorage.getItem('user-info');

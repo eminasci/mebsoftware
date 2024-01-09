@@ -1,5 +1,4 @@
 <template>
-  <!-- header -->
   <div class="header container-fluid ">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
@@ -30,7 +29,7 @@
                       <li class="list-group-item"><a class="dropdown-item text-dark" href="#">Kullanıcı Listeleri</a>
                       </li>
                     </router-link>
-                    <router-link to="/list-student">
+                    <router-link to="/list-fiveday">
                       <li class="list-group-item"><a class="dropdown-item text-dark" href="#">Öğrenci Listeleri</a>
                       </li>
                     </router-link>
@@ -56,6 +55,10 @@
                       <li class="list-group-item"><a class="dropdown-item text-dark" href="#">Öğrenci Ekle</a>
                       </li>
                     </router-link>
+                    <router-link to="/admin-add-excell">
+                      <li class="list-group-item"><a class="dropdown-item text-dark" href="#">Öğrenci Ekle(Excel)</a>
+                      </li>
+                    </router-link>
                     <router-link to="/add-scholl">
                       <li class="list-group-item"><a class="dropdown-item text-dark" href="#">Okul Ekle</a></li>
                     </router-link>
@@ -69,7 +72,7 @@
             </div>
             <div class="text-white">
               <li class="list-group-item">
-                <div class="dropdown-item" href="#">Emin Aşçı</div>
+                <div class="dropdown-item"  href="#">{{ this.userInfo }}</div>
               </li>
             </div>
             <div class="free-demo d-lg-block d-none " v-on:click="logout">
@@ -132,7 +135,19 @@ export default {
     logout() {
       localStorage.clear();
       this.$router.push({ name: 'LoginPage' });
-    }
+    },
+    async fetchUserName() {
+      try {
+        const storedUserInfo = JSON.parse(localStorage.getItem('user-info'));
+      this.userInfo = storedUserInfo.userName || 'Varsayılan Kullanıcı Adı';
+        console.log(this.userInfo)
+      } catch (error) {
+        console.error('Kullanıcı adı getirme hatası:', error);
+      }
+    },
+  },
+  created(){
+    this.fetchUserName();
   }
 }
 </script>

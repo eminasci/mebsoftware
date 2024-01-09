@@ -130,7 +130,7 @@ export default {
         alert('Öğrenci başarıyla güncellendi');
 
         console.warn(result);
-        this.$router.push({ name: 'ListStudent' });
+        this.$router.push({ name: 'ListFiveDay' });
 
       } catch (error) {
         console.error('Error updating student:', error);
