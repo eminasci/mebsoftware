@@ -2,7 +2,7 @@
 <template>
   <div>
     <HeaderTest />
-    <div class="user-list-container my-100-50">
+    <div class="user-list-container my-100-50 contain-list-user">
       <h1 class="fw-bold mb-5">Kullanıcı Listesi</h1>
       <table class="school-table">
         <thead>
@@ -142,5 +142,9 @@ export default {
 
 .my-100-50{
   margin: 100px 50px;
+}
+
+.contain-list-user {
+  height: 48.8vh;
 }
 </style>

@@ -7,7 +7,7 @@
             <div class="footer-column col-12 col-md-4 ">
                 <div class="footer-heading">LİSTELER</div>
                 <router-link to="/list-user">
-                    <p><a href="#" class="footer-link ">Kullanıcı Listeleri</a></p>
+                    <p><a href="#" class="footer-link">Kullanıcı Listeleri</a></p>
                 </router-link>
                 <router-link to="/list-student">
                     <p><a href="#" class="footer-link">Öğrenci Listeleri</a></p>

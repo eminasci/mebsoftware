@@ -49,7 +49,7 @@
                       <li class="list-group-item"><a class="dropdown-item text-dark" href="#">Öğrenci Ekle</a>
                       </li>
                     </router-link>
-                    <router-link to="/admin-add-excell">
+                    <router-link to="/admin-add-student-excell">
                       <li class="list-group-item"><a class="dropdown-item text-dark" href="#">Öğrenci Ekle(Excel)</a>
                       </li>
                     </router-link>

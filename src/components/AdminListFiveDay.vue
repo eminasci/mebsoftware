@@ -1,7 +1,7 @@
 <template>
   <HeaderTwoVue />
 
-  <div class="my-5">
+  <div class="my-5 contain-five-day">
     <div class="school-details">
       <div class="school-details-container bg-light">
         <h1 class="fw-bold">{{ okul.okuladi }} Okul Detayları</h1>
@@ -203,5 +203,9 @@ h1 {
 
 .school-info p strong {
   font-weight: bold;
+}
+
+.contain-five-day{
+  height: 58.5vh;
 }
 </style>
